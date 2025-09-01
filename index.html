@@ -1,28 +1,99 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Movie Website</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <link rel="stylesheet" href="style.css">
+
+  <!-- CDN de Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+
+  <title>Movie Font</title>
 </head>
+
 <body>
 
-    <!-- HEADER -->
-     <header>
-        <a href="#" class="logo">MovieFont</a>
-        <ul class="nav">
-            <li><a href="#">Inicio</a></li>
-            <li><a href="#">Populares</a></li>
-            <li><a href="#">Estrenos</a></li>
-            <li><a href="#">Series</a></li>
-            <li><a href="#">Mi Lista</a></li>
-        </ul>
-        <div class="Busqueda">
-            <input type="text" placeholder="Busqueda">
-        </div>
-     </header>
+  <!-- ======================== ENCABEZADO ======================== -->
+  <header class="encabezado">
+    
+    <!-- Logo del sitio -->
+    <a href="#" class="logo">MovieFont</a>
+
+    <!-- Menú de navegación -->
+    <nav class="nav">
+      <ul>
+        <li><a href="#">Inicio</a></li>
+        <li><a href="#">Populares</a></li>
+        <li><a href="#">Estrenos</a></li>
+        <li><a href="#">Series</a></li>
+        <li><a href="#">Mi Lista</a></li>
+      </ul>
+    </nav>
+
+    <!-- Buscador -->
+    <div class="buscador">
+      <input type="text" placeholder="Buscar…">
+      <i class="fa fa-search" aria-hidden="true"></i>
+    </div>
+  </header>
 
 
-    <script src="script.js"></script>
+  <!-- ======================== SECCIÓN PRINCIPAL ======================== -->
+  <!-- Sección que contiene la película principal -->
+  <section class="seccion-principal">
+
+    <!-- Overlay oscuro -->
+    <!-- Overlay: capa semitransparente sobre el fondo para dar contraste -->
+    <div class="capa"></div>
+
+    <!-- Contenido principal del banner -->
+    <div class="contenido activo">
+
+      <!-- Logo/título de la película -->
+      <img src="/assets/logo/logo-endGame.png" alt="Título de la película Endgame" class="titulo-pelicula" />
+
+      <!-- Datos de la película -->
+      <h4 class="info-pelicula">
+        <span>2019</span>
+        <span><i>13+</i></span>
+        <span>3h 1m</span>
+        <span>Acción / Ciencia ficción</span>
+      </h4>
+
+      <!-- Descripción -->
+      <p class="descripcion-pelicula">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente dignissimos eveniet ipsam.
+      </p>
+
+      <!-- Botones (Ver y Mi Lista) -->
+      <div class="botones">
+        <a href="#"><i class="fa fa-play"></i> Ver</a>
+        <a href="#"><i class="fa fa-plus"></i> Mi Lista</a>
+      </div>
+
+      <!-- Botón tráiler -->
+      <a href="#" class="btn-trailer"><i class="fa fa-play"></i> Trailer</a>
+    </div>
+  </section>
+
+
+  <!-- ======================== CARRUSEL ======================== -->
+  <!-- Miniaturas o posters de otras películas -->
+  <div class="carrusel"></div>
+
+
+  <!-- ======================== REDES SOCIALES ======================== -->
+  <!-- Lista con enlaces a redes sociales -->
+  <ul class="redes-sociales">
+    <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
+    <li><a href="#"><i class="fa-brands fa-youtube"></i></a></li>
+    <li><a href="#"><i class="fa-brands fa-x-twitter"></i></a></li>
+  </ul>
+
+  <!-- ======================== JAVASCRIPT ======================== -->
+  <script src="script.js"></script>
 </body>
+
 </html>

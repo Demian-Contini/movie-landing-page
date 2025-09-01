@@ -1,0 +1,165 @@
+/* ======================== RESET & VARIABLES ======================== */
+/* Variables globales para colores y estilos reutilizables */
+:root{
+    --bg: #111;                 /* Color de fondo principal */
+    --fg: #fff;                 /* Color de texto principal */
+    --muted: #b5b5b5;           /* Texto gris (secundario) */
+    --accent: #e50914;          /* Color rojo Netflix-like */
+    --overlay: rgba(0,0,0,.33); /* Capa transparente para overlays */
+}
+
+
+/* Reset básico */
+*{ box-sizing: border-box; }
+html, body { height: 100%; }
+
+
+/* Estilos base del body */
+body{
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg);
+    color: var(--fg);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* ======================== HEADER ======================== */
+
+
+/* Header principal que se mantiene sticky */
+  .encabezado {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 40px;
+    background: rgba(0,0,0,.6);  /* Fondo semitransparente */
+    z-index: 100; /* Profundidad del elemento, en este caso, por encima (100) */
+  }
+  
+/* ======================== LOGOTIPO ======================== */
+  .logo {
+    font-size: 40px;
+    color: var(--fg);
+    font-weight: 800;
+    letter-spacing: 1px;
+  }
+  .logo img {
+    height: 40px;
+    width: auto;
+  }
+  
+  /* ======================== NAVBAR ======================== */
+  .nav ul {
+    display: flex;
+    list-style: none;
+    gap: 12px;
+  }
+  
+  .nav li a {
+    color: var(--fg);
+    text-decoration: none;
+    font-weight: 500;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  /* Hover con color de acento */
+  .nav li:hover a { color: var(--accent); }
+  
+  /* ======================== BUSCADOR ======================== */
+  .buscador {
+    position: relative;
+    width: 320px;
+    height: 40px;
+  }
+
+  /* Caja de texto */
+  .buscador input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    color: var(--fg);
+    background: transparent;
+    border: 1px solid gray;
+    border-radius: 4px;
+    padding: 0 10px 0 45px;
+    backdrop-filter: blur(6px); /* Efecto vidrio por dentro del input */
+  }
+  .buscador input::placeholder { color: var(--fg); 
+  }
+  
+  /* Ícono de búsqueda (lupa) */
+  .buscador i {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 10px;
+    padding-right: 10px;
+    color: var(--fg);
+    border-right: 1px solid var(--fg);
+  }
+  
+  
+  /* ======================== SECCIÓN PRINCIPAL ======================== */
+  .titulo-pelicula {
+    width: 50%;
+    max-width: 320px;
+    height: auto;
+  }
+
+/* ======================== Imagen principal de fondo ======================== */
+  .seccion-principal {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    padding: 0 100px;
+    display: flex;
+    align-items: center;
+    background: url(assets/bg/bg-marvel.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;  
+  }
+  
+  /* Overlay//capa: oscura sobre la imagen */
+  .seccion-principal .capa {
+    position: absolute;
+    inset: 0; /* top:0; right:0; bottom:0; left:0 */
+    background: var(--overlay);
+    z-index: 0;
+  }
+  
+  .seccion-principal .contenido {
+    position: relative;
+    z-index: 1;
+    max-width: 640px;
+  }
+
+  /* Animación de entrada, escalado) */
+  .contenido.activo {
+    display: block;
+    visibility: visible;
+    transform: scale(1);
+    transition: 0.5s;
+  }
+  
+  
+  /* ======================== REDES SOCIALES ======================== */
+  .redes-sociales {
+    display: flex;
+    gap: 15px;
+    list-style: none;
+    padding: 20px;
+  }
+  .redes-sociales a {
+    color: var(--fg);
+    font-size: 20px;
+    transition: 0.3s;
+  }
+  .redes-sociales a:hover { color: var(--accent); }
+  

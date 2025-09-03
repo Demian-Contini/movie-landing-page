@@ -2,9 +2,9 @@
 /* Variables globales para colores y estilos reutilizables */
 :root{
     --bg: #111;                 /* Color de fondo principal */
-    --fg: #fff;                 /* Color de texto principal */
+    --texto: #fff;                 /* Color de texto principal */
     --muted: #b5b5b5;           /* Texto gris (secundario) */
-    --accent: #e50914;          /* Color rojo Netflix-like */
+    --detail: #e50914;          /* Color rojo Netflix-like */
     --overlay: rgba(0,0,0,.33); /* Capa transparente para overlays */
 }
 
@@ -43,7 +43,7 @@ body{
 /* ======================== LOGOTIPO ======================== */
   .logo {
     font-size: 40px;
-    color: var(--fg);
+    color: var(--texto);
     font-weight: 800;
     letter-spacing: 1px;
   }
@@ -60,7 +60,7 @@ body{
   }
   
   .nav li a {
-    color: var(--fg);
+    color: var(--texto);
     text-decoration: none;
     font-weight: 500;
     letter-spacing: 1px;
@@ -68,7 +68,7 @@ body{
     transition: 0.3s;
   }
   /* Hover con color de acento */
-  .nav li:hover a { color: var(--accent); }
+  .nav li:hover a { color: var(--detail); }
   
   /* ======================== BUSCADOR ======================== */
   .buscador {
@@ -91,7 +91,7 @@ body{
     padding: 0 10px 0 45px;
     backdrop-filter: blur(6px); /* Efecto vidrio por dentro del input */
   }
-  .buscador input::placeholder { color: var(--fg); 
+  .buscador input::placeholder { color: var(--texto); 
   }
   
   /* Ícono de búsqueda (lupa) */
@@ -108,10 +108,80 @@ body{
   
   /* ======================== SECCIÓN PRINCIPAL ======================== */
   .titulo-pelicula {
-    width: 50%;
-    max-width: 320px;
+    width: 80%;
+    max-width: 550px;
     height: auto;
+    margin-bottom: 20px;
   }
+  .seccion-principal h4{
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 500;
+    font-size: 30px;
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+
+   /* ===================== DETALLES DESCRIPCION ===================== */
+  .seccion-principal .contenido h4 span{
+    padding: 0 10px;
+    border-right: 1px solid rgba(255, 255, 255, 0.5);
+  }
+
+  .seccion-principal .contenido h4 span:first-child{
+    padding-left: 0;
+  }
+
+  .seccion-principal .contenido h4 span:last-child{
+    border-right: none;
+  }
+
+  .seccion-principal .contenido h4 span:last-child{
+    border-right: none;
+  }
+
+  .seccion-principal .contenido h4 span i{
+    background-color: var(--detail);
+    color: white;
+    padding: 0 8px;
+    display: inline-block;
+    border-radius: 5px;
+  }
+
+  .seccion-principal .contenido p{
+    font-size: 1em;
+    font-weight: 300;
+    line-height: 1.5em;
+    color: white;
+    margin: 10px 0 20px;
+  }
+
+  .seccion-principal .botones{
+    position: relative;
+  }
+  
+  .seccion-principal .botones a{
+    position: relative;
+    display: inline-block;
+    margin-right: 10px;
+    background-color: var(--detail);
+    color: white;
+    font-weight:bold;
+    padding: 6px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    letter-spacing: 1px;
+    transition: 0.5s;
+    cursor: pointer;
+  }
+  .seccion-principal .botones a:nth-child(2){
+    background: rgba(0,0,0,0.5);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+  }
+
+  .seccion-principal .botones a:hover:nth-child(2){
+    background: var(--detail);
+  }
+
 
 /* ======================== Imagen principal de fondo ======================== */
   .seccion-principal {
@@ -136,8 +206,11 @@ body{
   
   .seccion-principal .contenido {
     position: relative;
-    z-index: 1;
-    max-width: 640px;
+    max-width: 550px;
+    display: none;
+    visibility: hidden;
+    transform: scale(0);
+    transition: 0.5s;
   }
 
   /* Animación de entrada, escalado) */
@@ -161,5 +234,5 @@ body{
     font-size: 20px;
     transition: 0.3s;
   }
-  .redes-sociales a:hover { color: var(--accent); }
+  .redes-sociales a:hover { color: var(--detail); }
   

@@ -1,11 +1,11 @@
 /* ======================== RESET & VARIABLES ======================== */
 /* Variables globales para colores y estilos reutilizables */
 :root{
-    --bg: #111;                 /* Color de fondo principal */
+    --fondo: #111;                 /* Color de fondo principal */
     --texto: #fff;                 /* Color de texto principal */
-    --muted: #b5b5b5;           /* Texto gris (secundario) */
-    --detail: #e50914;          /* Color rojo Netflix-like */
-    --overlay: rgba(0,0,0,.33); /* Capa transparente para overlays */
+    --textoSecu: #b5b5b5;           /* Texto gris (secundario) */
+    --detalles: #e50914;          /* Color rojo Netflix-like */
+    --capa: rgba(0,0,0,.33); /* Capa transparente para overlays */
 }
 
 
@@ -18,8 +18,8 @@ html, body { height: 100%; }
 body{
     margin: 0;
     padding: 0;
-    background-color: var(--bg);
-    color: var(--fg);
+    background-color: var(--fondo);
+    color: var(--texto);
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -68,7 +68,7 @@ body{
     transition: 0.3s;
   }
   /* Hover con color de acento */
-  .nav li:hover a { color: var(--detail); }
+  .nav li:hover a { color: var(--detalles); }
   
   /* ======================== BUSCADOR ======================== */
   .buscador {
@@ -84,12 +84,12 @@ body{
     top: 0;
     width: 100%;
     height: 100%;
-    color: var(--fg);
+    color: var(--texto);
     background: transparent;
-    border: 1px solid gray;
+    border: 1px solid var(--textoSecu);
     border-radius: 4px;
     padding: 0 10px 0 45px;
-    backdrop-filter: blur(6px); /* Efecto vidrio por dentro del input */
+    backdrop-filter: blur(6px); /* Efecto vidrio esmerilado por dentro del input */
   }
   .buscador input::placeholder { color: var(--texto); 
   }
@@ -101,8 +101,8 @@ body{
     transform: translateY(-50%);
     left: 10px;
     padding-right: 10px;
-    color: var(--fg);
-    border-right: 1px solid var(--fg);
+    color: var(--texto);
+    border-right: 1px solid var(--texto);
   }
   
   
@@ -113,18 +113,29 @@ body{
     height: auto;
     margin-bottom: 20px;
   }
+  .seccion-principal {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    padding: 0 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: url(assets/bg/bg-marvel.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;  
+  }
   .seccion-principal h4{
-    color: rgba(255, 255, 255, 0.5);
+    color: var(--textoSecu);
     font-weight: 500;
     font-size: 30px;
     margin-bottom: 0;
     margin-top: 0;
   }
 
-   /* ===================== DETALLES DESCRIPCION ===================== */
   .seccion-principal .contenido h4 span{
     padding: 0 10px;
-    border-right: 1px solid rgba(255, 255, 255, 0.5);
+    border-right: 1px solid var(--textoSecu);
   }
 
   .seccion-principal .contenido h4 span:first-child{
@@ -140,8 +151,8 @@ body{
   }
 
   .seccion-principal .contenido h4 span i{
-    background-color: var(--detail);
-    color: white;
+    background-color: var(--detalles);
+    color: var(--texto);
     padding: 0 8px;
     display: inline-block;
     border-radius: 5px;
@@ -151,20 +162,20 @@ body{
     font-size: 1em;
     font-weight: 300;
     line-height: 1.5em;
-    color: white;
+    color: var(--texto);
     margin: 10px 0 20px;
   }
 
   .seccion-principal .botones{
-    position: relative;
+   display: flex;
   }
   
   .seccion-principal .botones a{
-    position: relative;
-    display: inline-block;
+    justify-content: center;
+    align-items: center;
     margin-right: 10px;
-    background-color: var(--detail);
-    color: white;
+    background-color: var(--detalles);
+    color: var(--texto);
     font-weight:bold;
     padding: 6px 20px;
     border-radius: 5px;
@@ -175,32 +186,18 @@ body{
   }
   .seccion-principal .botones a:nth-child(2){
     background: rgba(0,0,0,0.5);
-    border: 1px solid rgba(255, 255, 255, 0.5);
+    border: 1px solid var(--textoSecu);
   }
 
   .seccion-principal .botones a:hover:nth-child(2){
-    background: var(--detail);
-  }
-
-
-/* ======================== Imagen principal de fondo ======================== */
-  .seccion-principal {
-    position: relative;
-    width: 100%;
-    min-height: 100vh;
-    padding: 0 100px;
-    display: flex;
-    align-items: center;
-    background: url(assets/bg/bg-marvel.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;  
+    background: var(--detalles);
   }
   
   /* Overlay//capa: oscura sobre la imagen */
   .seccion-principal .capa {
     position: absolute;
     inset: 0; /* top:0; right:0; bottom:0; left:0 */
-    background: var(--overlay);
+    background: var(--capa);
     z-index: 0;
   }
   
@@ -221,18 +218,121 @@ body{
     transition: 0.5s;
   }
   
-  
+/* ======================== CARRUSEL ======================== */
+/* Carrusel a la derecha */
+.carrusel-derecha {
+  flex-shrink: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-left: 40px;
+  padding-right: 80px;
+  z-index: 1;
+  /* Necesario para la perspectiva 3D */
+  perspective: 1500px;
+  -webkit-perspective: 1000px;
+}
+
+.carrusel {
+  width: 35vw;  /* Para que sea responsive */
+  height: 280px;
+  background: rgba(0, 0, 0, .3);
+  backdrop-filter: blur(20px);
+  border-radius: 12px;
+  padding: 20px; 
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Centramos el contenido horizontalmente */
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 6px 20px var(--fondo);
+  transform-style: preserve-3d;
+}
+
+.item {
+  cursor: pointer;
+  transition: transform 0.5s ease-in-out, filter 0.5s ease-in-out;
+  position: absolute;
+  backface-visibility: hidden;
+  transform-origin: center;
+}
+
+.item img {
+  width: 110px;
+  height: 170px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px var(--fondo);
+  display: block;
+}
+
+/* Clases de estado que el JavaScript controlara */
+.item.active {
+  transform: scale(1.2) translateX(0);
+  filter: blur(0);
+  z-index: 10;
+}
+
+.item.side-left {
+  transform: scale(0.9) translateX(-150px);
+  filter: blur(2px);
+  z-index: 5;
+}
+
+.item.side-right {
+  transform: scale(0.9) translateX(150px);
+  filter: blur(2px);
+  z-index: 5;
+}
+
+.item.background-left {
+  transform: scale(0.7) translateX(-300px);
+  filter: blur(5px);
+  z-index: 2;
+}
+
+.item.background-right {
+  transform: scale(0.7) translateX(300px);
+  filter: blur(5px);
+  z-index: 2;
+}
+/* Botón de trailer */
+.btn-trailer {
+  margin-top: 15px;
+  display: inline-block;
+  background:var(--fondo);
+  color: var(--texto);
+  padding: 10px 18px;
+  border-radius: 999px;
+  text-decoration: none;
+  border: 1px solid var(--textoSecu);
+  backdrop-filter: blur(6px); /* difumina el fondo */
+}
+.btn-trailer:hover {
+  background: var(--detalles)
+}
   /* ======================== REDES SOCIALES ======================== */
   .redes-sociales {
-    display: flex;
-    gap: 15px;
-    list-style: none;
-    padding: 20px;
+  position: absolute;
+  bottom: 50px;
+  right: 30px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  list-style-type: none; /* Sacamos el ::marker */
   }
   .redes-sociales a {
-    color: var(--fg);
-    font-size: 20px;
-    transition: 0.3s;
+   color: var(--texto);
+   text-decoration: none;
+   text-transform: uppercase;
+   letter-spacing: 1px;
+   font-size: 20px;
+   transition: 0.3s;
+   cursor: pointer;
   }
-  .redes-sociales a:hover { color: var(--detail); }
+  .redes-sociales a:hover { 
+    color: var(--detalles); 
+  }
   

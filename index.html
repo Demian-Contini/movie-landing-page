@@ -7,7 +7,7 @@
   
   <link rel="stylesheet" href="style.css">
 
-  <!-- CDN de Font Awesome -->
+  <!-- CDN de Font Awesome -- Libreria de iconos vectoriales -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
 
   <title>Movie Font</title>
@@ -35,7 +35,8 @@
     <!-- Buscador -->
     <div class="buscador">
       <input type="text" placeholder="Buscar…">
-      <i class="fa fa-search" aria-hidden="true"></i>
+      <i class="fa fa-search"></i> <!-- Icono de Lupa -->
+      <!--  -->
     </div>
   </header>
 
@@ -44,12 +45,12 @@
   <!-- Sección que contiene la película principal -->
   <section class="seccion-principal">
 
-    <!-- Overlay oscuro -->
+    
     <!-- Overlay: capa semitransparente sobre el fondo para dar contraste -->
-    <div class="capa"></div>
+    <div class="capa"></div><!-- Overlay oscuro -->
 
-    <!-- Contenido principal del banner -->
-    <div class="contenido activo">
+    
+    <div class="contenido activo"><!-- Contenido principal del banner -->
 
       <!-- Logo/título de la película -->
       <img src="/assets/logo/logo-endGame.png" alt="Título de la película Endgame" class="titulo-pelicula" />
@@ -76,21 +77,33 @@
         <a href="#"><i class="fa fa-play"></i> Ver</a>
         <a href="#"><i class="fa fa-plus"></i> Mi Lista</a>
       </div>
-
-   
+       <!-- Botón tráiler -->  
+        <a href="#" class="btn-trailer"><i class="fa fa-play"></i>Trailer</a>
+    </div>
+    </div>
 
 
   <!-- ======================== CARRUSEL ======================== -->
   <!-- Miniaturas o posters de otras películas -->
-  <!-- <div class="carrusel">
-    <div class="carrusel-items">
-      <img src="./assets/img/img-endGame.jpg" alt="">
+  <aside class="carrusel-derecha"> <!--Contenedor semantico  -->
+    <div class="carrusel">
+        <div class="item">
+            <img src="./assets/img/img-endGame.jpg" alt="End Game">
+        </div>
+        <div class="item">
+            <img src="./assets/img/img-creed1.jpg" alt="Creed 1">
+        </div>
+        <div class="item">
+            <img src="./assets/img/img-frankSerie.jpg" alt="Frank Serie">
+        </div>
+        <div class="item">
+            <img src="./assets/img/img-jhon1.jpg" alt="Jhon 1">
+        </div>
+        <div class="item">
+            <img src="./assets/img/img-rocky.jpg" alt="Rocky">
+        </div>
     </div>
-  </div> -->
-
-   <!-- Botón tráiler -->
-      <a href="#" class="btn-trailer"><i class="fa fa-play"></i> Trailer</a>
-    </div>
+</aside>
   </section>
   <!-- ======================== REDES SOCIALES ======================== -->
   <!-- Lista con enlaces a redes sociales -->

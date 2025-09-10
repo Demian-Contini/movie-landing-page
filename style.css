@@ -116,14 +116,14 @@ body{
   .seccion-principal {
     position: relative;
     width: 100%;
-    min-height: 100vh;
+    height: 100%;
     padding: 0 100px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     background: url(assets/bg/bg-marvel.jpg);
     background-repeat: no-repeat;
-    background-size: cover;  
+    background-size: cover; 
   }
   .seccion-principal h4{
     color: var(--textoSecu);
@@ -360,4 +360,40 @@ body{
   .redes-sociales a:hover { 
     color: var(--detalles); 
   }
-  
+
+  /* SECCION REPRODUCIR TRAILER */
+  .trailer{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(20px);
+    visibility: hidden; 
+    opacity: 0; 
+    transition: 0.5s;
+  }
+  /* Estado activo: visible y sin opacidad */
+  .trailer.active {
+  visibility: visible;
+  opacity: 1;
+  }
+
+  .trailer iframe {
+    max-width: 900px;
+    outline: none;
+  }
+
+  .close {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    cursor: pointer;
+    filter: invert(1);
+    max-width: 30px;
+  }

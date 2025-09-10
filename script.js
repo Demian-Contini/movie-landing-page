@@ -2,7 +2,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const items = document.querySelectorAll('.item');
     const nextBtn = document.getElementById('next');
     const prevBtn = document.getElementById('prev');
-    let activeIndex = 0; // El índice de la imagen que está en el centro.
+    let activeIndex = 0;
+
+    // ----- Nuevas selecciones de elementos -----
+    const trailerBtn = document.querySelector('.btn-trailer');
+    const closeBtn = document.querySelector('.close');
+    const trailer = document.querySelector('.trailer');
+    const videoFrame = document.querySelector('.trailer iframe');
 
     // Función que asigna las clases correctas a cada elemento del carrusel.
     function updateCarousel() {
@@ -42,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // ***** Event listeners para los botones de navegación (CORREGIDO) *****
+    // Event listeners para los botones de navegación
     nextBtn.addEventListener('click', () => {
         activeIndex = (activeIndex + 1) % items.length;
         updateCarousel();
@@ -51,6 +57,27 @@ document.addEventListener('DOMContentLoaded', () => {
     prevBtn.addEventListener('click', () => {
         activeIndex = (activeIndex - 1 + items.length) % items.length;
         updateCarousel();
+    });
+
+    // ----- Lógica para el tráiler (nuevo) -----
+
+    // Al hacer clic en el botón de tráiler, se muestra el video
+    trailerBtn.addEventListener('click', (e) => {
+        e.preventDefault(); // Evita que el enlace de `<a>` navegue
+        trailer.classList.add('active');
+        
+        // Reproduce el video al agregarle el parámetro `autoplay`
+        const videoSrc = videoFrame.src.includes('autoplay=1') ? videoFrame.src : videoFrame.src + '&autoplay=1';
+        videoFrame.src = videoSrc;
+    });
+
+    // Al hacer clic en el botón de cierre, se oculta el video y se detiene
+    closeBtn.addEventListener('click', () => {
+        trailer.classList.remove('active');
+        
+        // Detiene el video al quitarle el `autoplay` y reiniciar el `src`
+        const videoSrc = videoFrame.src.replace('&autoplay=1', '');
+        videoFrame.src = videoSrc;
     });
 
     // Llama a la función una vez para inicializar el carrusel al cargar la página.
